@@ -22,3 +22,10 @@ export const CardBody = styled.div`
   padding-right: 32px;
   padding-left: 32px;
 `;
+export const CardImage = styled.div`
+  width: 100%;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: 200px 200px;
+  background-image: url(${(props) => props.imgUrl});
+`;

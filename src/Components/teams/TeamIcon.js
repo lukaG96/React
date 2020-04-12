@@ -1,10 +1,12 @@
 import React from "react";
 import Button from "../_styledComponents/buttons";
+import { Link } from "react-router-dom";
 import {
   TeamIconWrapper,
   CardHeader,
   CardHeading,
   CardBody,
+  CardImage,
 } from "../_styledComponents/teamIcon";
 
 function TeamIcon({ team }) {
@@ -14,12 +16,12 @@ function TeamIcon({ team }) {
         <CardHeading>{team.name}</CardHeading>
       </CardHeader>
       <CardBody>
-        <a href={`/details/${team.id}`} className="pet">
-          Id
-        </a>
-        <Button noBorder block size="lg" btnColor="danger">
-          Details
-        </Button>
+        <CardImage imgUrl="https://a.espncdn.com/i/teamlogos/nba/500/bos.png" />
+        <Link to={"/details/" + team.id}>
+          <Button noBorder block size="lg" btnColor="danger">
+            Details
+          </Button>
+        </Link>
       </CardBody>
     </TeamIconWrapper>
   );
