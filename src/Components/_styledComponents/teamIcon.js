@@ -28,4 +28,31 @@ export const CardImage = styled.div`
   background-repeat: no-repeat;
   background-size: 200px 200px;
   background-image: url(${(props) => props.imgUrl});
+  margin-bottom: 35px;
+`;
+export const CardFieldset = styled.fieldset`
+  position: relative;
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+  & + & {
+    margin-top: 24px;
+  }
+
+  &:nth-last-of-type(2) {
+    margin-top: 32px;
+  }
+
+  &:last-of-type {
+    text-align: center;
+  }
+`;
+export const CardOptionsNote = styled.small`
+  padding-top: 8px;
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
 `;

@@ -7,6 +7,8 @@ import {
   CardHeading,
   CardBody,
   CardImage,
+  CardFieldset,
+  CardOptionsNote,
 } from "../_styledComponents/teamIcon";
 
 function TeamIcon({ team }) {
@@ -17,6 +19,14 @@ function TeamIcon({ team }) {
       </CardHeader>
       <CardBody>
         <CardImage imgUrl="https://a.espncdn.com/i/teamlogos/nba/500/bos.png" />
+        <CardFieldset>
+          <CardOptionsNote>
+            <b>Full name:</b> {team.full_name}
+          </CardOptionsNote>
+          <CardOptionsNote>
+            <b>Division:</b> {team.division}
+          </CardOptionsNote>
+        </CardFieldset>
         <Link to={"/details/" + team.id}>
           <Button noBorder block size="lg" btnColor="danger">
             Details
