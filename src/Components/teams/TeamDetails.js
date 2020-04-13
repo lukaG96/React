@@ -10,19 +10,19 @@ const startState = {
   error: "",
   data: [],
 };
-const TeamScoreReducer = (state, akcija) => {
-  switch (akcija.poruka) {
-    case "Uspjesno":
+const TeamScoreReducer = (state, action) => {
+  switch (action.message) {
+    case "Success":
       return {
         loading: false,
-        data: akcija.data,
+        data: action.data,
         error: "",
       };
-    case "Greska":
+    case "Error":
       return {
         loading: false,
         data: {},
-        error: akcija.data,
+        error: action.data,
       };
     default:
       return state;
@@ -30,14 +30,19 @@ const TeamScoreReducer = (state, akcija) => {
 };
 
 function TeamDetails(props) {
+  const [team, setTeam] = useState({});
+  const [teamScore, setTeamScore] = useReducer(TeamScoreReducer, startState);
   const teamFromRedux = useSelector((state) =>
     state.teamsKey.teams.find(
       (x) => x.id === parseInt(props.match.params.team_id)
     )
   );
-  const [team, setTeam] = useState({});
-  const [teamScore, setTeamScore] = useReducer(TeamScoreReducer, startState);
 
+  useEffect(() => {
+    mapTeam();
+    fetchTeamScore(teamFromRedux.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   function mapTeam() {
     if (teamFromRedux) {
       setTeam({
@@ -53,24 +58,18 @@ function TeamDetails(props) {
       //redirect to error page
     }
   }
-  async function fetchTeamScore(teamId) {
+  function fetchTeamScore(teamId) {
     axios
       .get("/api/v1/games?seasons[]=2018&seasons[]=2017&team_ids[]=" + teamId)
       .then((response) => {
-        setTeamScore({ poruka: "Uspjesno", data: response.data.data });
+        let scores = response.data.data;
+        setTeamScore({ message: "Success", data: scores });
       })
       .catch((error) => {
-        setTeamScore({ poruka: "Greska", data: error.message });
+        setTeamScore({ message: "Error", data: error.message });
       });
     console.log(teamScore);
   }
-
-  useEffect(() => {
-    mapTeam();
-    fetchTeamScore(teamFromRedux.id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return team ? (
     <FlexContainer>
       <TeamIcon key={team.id} team={team} fullData showBtn={false} />
