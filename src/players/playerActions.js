@@ -23,9 +23,9 @@ export const fetchPlayersFailure = (errors) => {
   };
 };
 
-export const fetchTeams = () => {
+export const fetchPlayers = () => {
   return (dispatch) => {
-    dispatch(fetchPlayersRequest);
+    dispatch(fetchPlayersRequest());
     axios
       .get("/api/v1/players")
       .then((response) => {

@@ -25,7 +25,7 @@ export const fetchTeamsFailure = (errors) => {
 
 export const fetchTeams = () => {
   return (dispatch) => {
-    dispatch(fetchTeamsRequest);
+    dispatch(fetchTeamsRequest());
     axios
       .get("/api/v1/teams")
       .then((response) => {
