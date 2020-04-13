@@ -45,7 +45,8 @@ export const NavRight = styled.div`
     margin-right: 20px;
   }
 `;
-export const MenuLink = styled.a`
+export const MenuLink = styled.p`
   margin-left: 15px;
   text-decoration: none;
+  display: inline-flex;
 `;

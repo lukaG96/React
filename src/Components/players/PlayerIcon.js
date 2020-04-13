@@ -1,8 +1,8 @@
 import React from "react";
 import {
   PlayerIconWrapper,
-  CardHeader,
-  CardHeading,
+  // CardHeader,
+  // CardHeading,
   CardBody,
   CardImage,
   CardFieldset,
@@ -11,9 +11,9 @@ import {
 function PlayerIcon({ player }) {
   return (
     <PlayerIconWrapper>
-      <CardHeader>
+      {/* <CardHeader>
         <CardHeading>{player.name}</CardHeading>
-      </CardHeader>
+      </CardHeader> */}
       <CardBody>
         <CardImage imgUrl="https://a.espncdn.com/i/headshots/nba/players/full/6583.png" />
         <CardFieldset>

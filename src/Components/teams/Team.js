@@ -13,11 +13,12 @@ function Team() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return teams.loading ? (
-    <h2>Loading data</h2>
-  ) : teams.errors ? (
-    <h2>{teams.errors}</h2>
-  ) : (
+  // return teams.loading ? (
+  //   <h2>Loading data</h2>
+  // ) : teams.errors ? (
+  //   <h2>{teams.errors}</h2>
+  //   ) :
+  return (
     <FlexContainer>
       {teams &&
         teams.teams &&
