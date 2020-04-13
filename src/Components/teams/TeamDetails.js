@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { FlexContainer } from "../_styledComponents/flexContainer";
-import {
-  TeamIconWrapper,
-  CardHeader,
-  CardHeading,
-  CardBody,
-  CardImage,
-  CardFieldset,
-  CardOptionsNote,
-} from "../_styledComponents/teamIcon";
+import TeamIcon from "./TeamIcon";
 
 function TeamDetails(props) {
   const teamFromRedux = useSelector((state) =>
@@ -41,31 +33,7 @@ function TeamDetails(props) {
 
   return team ? (
     <FlexContainer>
-      <TeamIconWrapper>
-        <CardHeader>
-          <CardHeading>{team.name}</CardHeading>
-        </CardHeader>
-        <CardBody>
-          <CardImage imgUrl="https://a.espncdn.com/i/teamlogos/nba/500/bos.png" />
-          <CardFieldset>
-            <CardOptionsNote>
-              <b>Full name:</b> {team.full_name}
-            </CardOptionsNote>
-            <CardOptionsNote>
-              <b>Division:</b> {team.division}
-            </CardOptionsNote>
-            <CardOptionsNote>
-              <b>Conference:</b> {team.conference}
-            </CardOptionsNote>
-            <CardOptionsNote>
-              <b>Abbreviation:</b> {team.abbreviation}
-            </CardOptionsNote>
-            <CardOptionsNote>
-              <b>City:</b> {team.city}
-            </CardOptionsNote>
-          </CardFieldset>
-        </CardBody>
-      </TeamIconWrapper>
+      <TeamIcon key={team.id} team={team} fullData showBtn={false} />
     </FlexContainer>
   ) : (
     <div> no data </div>

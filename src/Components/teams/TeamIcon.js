@@ -11,7 +11,7 @@ import {
   CardOptionsNote,
 } from "../_styledComponents/teamIcon";
 
-function TeamIcon({ team }) {
+function TeamIcon({ team, fullData, showBtn }) {
   return (
     <TeamIconWrapper>
       <CardHeader>
@@ -26,12 +26,36 @@ function TeamIcon({ team }) {
           <CardOptionsNote>
             <b>Division:</b> {team.division}
           </CardOptionsNote>
+
+          {fullData ? (
+            <>
+              <CardOptionsNote>
+                <b>Conference:</b> {team.conference}
+              </CardOptionsNote>
+
+              <CardOptionsNote>
+                <b>Abbreviation:</b> {team.abbreviation}
+              </CardOptionsNote>
+
+              <CardOptionsNote>
+                <b>City:</b> {team.city}
+              </CardOptionsNote>
+            </>
+          ) : (
+            <></>
+          )}
         </CardFieldset>
-        <Link to={"/details/" + team.id}>
-          <Button noBorder block size="lg" btnColor="danger">
-            Details
-          </Button>
-        </Link>
+        {showBtn ? (
+          <>
+            <Link to={"/details/" + team.id} style={{ textDecoration: "none" }}>
+              <Button noBorder block size="lg" btnColor="danger">
+                Details
+              </Button>
+            </Link>
+          </>
+        ) : (
+          <></>
+        )}
       </CardBody>
     </TeamIconWrapper>
   );

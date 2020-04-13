@@ -10,7 +10,8 @@ function Team() {
 
   useEffect(() => {
     dispatch(fetchTeams());
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return teams.loading ? (
     <h2>Loading data</h2>
@@ -20,7 +21,9 @@ function Team() {
     <FlexContainer>
       {teams &&
         teams.teams &&
-        teams.teams.map((team) => <TeamIcon key={team.id} team={team} />)}
+        teams.teams.map((team) => (
+          <TeamIcon key={team.id} team={team} fullData={false} showBtn />
+        ))}
     </FlexContainer>
   );
 }
