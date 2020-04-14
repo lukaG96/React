@@ -23,6 +23,9 @@ function PlayerIcon({ player }) {
           <CardOptionsNote>
             <b>Last name: </b> {player.last_name}
           </CardOptionsNote>
+          <CardOptionsNote>
+            <b>Team : </b> {player.team.full_name}
+          </CardOptionsNote>
         </CardFieldset>
       </CardBody>
     </PlayerIconWrapper>

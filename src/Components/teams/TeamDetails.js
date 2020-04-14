@@ -46,13 +46,14 @@ function TeamDetails(props) {
   function mapTeam() {
     if (teamFromRedux) {
       setTeam({
-        id: teamFromRedux.id,
-        name: teamFromRedux.name,
-        abbreviation: teamFromRedux.abbreviation,
-        city: teamFromRedux.city,
-        conference: teamFromRedux.conference,
-        division: teamFromRedux.division,
-        full_name: teamFromRedux.full_name,
+        // id: teamFromRedux.id,
+        // name: teamFromRedux.name,
+        // abbreviation: teamFromRedux.abbreviation,
+        // city: teamFromRedux.city,
+        // conference: teamFromRedux.conference,
+        // division: teamFromRedux.division,
+        // full_name: teamFromRedux.full_name,
+        ...teamFromRedux,
       });
     } else {
       //redirect to error page

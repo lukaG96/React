@@ -15,7 +15,7 @@ function TeamScoreIcon({ score }) {
   return (
     <TeamScoreIconWrapper>
       <CardHeader>
-        <CardHeading>Date: {Moment(dt).format("d MMM")}</CardHeading>
+        <CardHeading>Date: {Moment(dt).format("d MMM HH:mm")}</CardHeading>
       </CardHeader>
       <CardBody>
         <CardFieldset>
