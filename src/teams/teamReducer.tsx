@@ -10,7 +10,7 @@ const startState = {
   error: "",
 };
 
-const teamsReducer = (state = startState, action) => {
+const teamsReducer = (state = startState, action: any) => {
   switch (action.type) {
     case FETCH_TEAMS_REQUEST:
       return {

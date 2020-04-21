@@ -4,13 +4,18 @@ import { FlexContainer } from "../_styledComponents/flexContainer";
 import TeamIcon from "./TeamIcon";
 import axios from "axios";
 import TeamScoreIcon from "../scores/teamScoreIcon";
+import { TeamModel } from "../../Models/teamDTO";
+
+interface Team {
+  teamModel: TeamModel;
+}
 
 const startState = {
   loading: true,
   error: "",
   data: [],
 };
-const TeamScoreReducer = (state, action) => {
+const TeamScoreReducer = (state: any, action: any) => {
   switch (action.message) {
     case "Success":
       return {
@@ -29,12 +34,12 @@ const TeamScoreReducer = (state, action) => {
   }
 };
 
-function TeamDetails(props) {
-  const [team, setTeam] = useState({});
+function TeamDetails(props: any) {
+  const [team, setTeam] = useState<TeamModel>();
   const [teamScore, setTeamScore] = useReducer(TeamScoreReducer, startState);
-  const teamFromRedux = useSelector((state) =>
+  const teamFromRedux = useSelector((state: any) =>
     state.teamsKey.teams.find(
-      (x) => x.id === parseInt(props.match.params.team_id)
+      (x: any) => x.id === parseInt(props.match.params.team_id)
     )
   );
 
@@ -59,7 +64,7 @@ function TeamDetails(props) {
       //redirect to error page
     }
   }
-  function fetchTeamScore(teamId) {
+  function fetchTeamScore(teamId: string) {
     axios
       .get("/api/v1/games?seasons[]=2018&seasons[]=2017&team_ids[]=" + teamId)
       .then((response) => {
@@ -77,7 +82,7 @@ function TeamDetails(props) {
       <FlexContainer>
         {teamScore &&
           teamScore.data &&
-          teamScore.data.map((score) => (
+          teamScore.data.map((score: any) => (
             <TeamScoreIcon key={score.id} score={score} />
           ))}
       </FlexContainer>

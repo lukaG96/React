@@ -4,19 +4,20 @@ import {
   FETCH_TEAMS_SUCCESS,
   FETCH_TEAMS_FAILURE,
 } from "./teamTypes";
+import { TeamModel } from "../Models/teamDTO";
 
 export const fetchTeamsRequest = () => {
   return {
     type: FETCH_TEAMS_REQUEST,
   };
 };
-export const fetchTeamsSuccess = (teams) => {
+export const fetchTeamsSuccess = (teams: TeamModel[]) => {
   return {
     type: FETCH_TEAMS_SUCCESS,
     payload: teams,
   };
 };
-export const fetchTeamsFailure = (errors) => {
+export const fetchTeamsFailure = (errors: any) => {
   return {
     type: FETCH_TEAMS_FAILURE,
     payload: errors,
@@ -24,7 +25,7 @@ export const fetchTeamsFailure = (errors) => {
 };
 
 export const fetchTeams = () => {
-  return (dispatch) => {
+  return (dispatch: any) => {
     dispatch(fetchTeamsRequest());
     axios
       .get("/api/v1/teams")

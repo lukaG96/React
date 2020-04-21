@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "../_styledComponents/buttons";
+
 import { Link } from "react-router-dom";
+import { TeamModel } from "../../Models/teamDTO";
 import {
   TeamIconWrapper,
   CardHeader,
@@ -11,7 +13,20 @@ import {
   CardOptionsNote,
 } from "../_styledComponents/teamIcon";
 
-function TeamIcon({ team, fullData, showBtn }) {
+declare namespace JSX {
+  interface Element {}
+  interface IntrinsicElements {
+    div: any;
+  }
+}
+
+interface ITeamIcon {
+  team: TeamModel;
+  fullData: boolean;
+  showBtn: boolean;
+}
+
+const TeamIcon: React.FC<ITeamIcon> = ({ team, fullData, showBtn }) => {
   return (
     <TeamIconWrapper>
       <CardHeader>
@@ -59,6 +74,6 @@ function TeamIcon({ team, fullData, showBtn }) {
       </CardBody>
     </TeamIconWrapper>
   );
-}
+};
 
 export default TeamIcon;
