@@ -1946,7 +1946,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/hoist-non-react-statics@npm:*":
+"@types/history@npm:*":
+  version: 4.7.5
+  resolution: "@types/history@npm:4.7.5"
+  checksum: 2/c62e216239e27178b016a15c6833c42414d34a0f82831a089db47f1d4be144018c8015777e5c478d8828c5a0ddec509892d70a9f26faf2f972d31f9d9f70fba9
+  languageName: node
+  linkType: hard
+
+"@types/hoist-non-react-statics@npm:*, @types/hoist-non-react-statics@npm:^3.3.0":
   version: 3.3.1
   resolution: "@types/hoist-non-react-statics@npm:3.3.1"
   dependencies:
@@ -2006,10 +2013,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^13.11.1":
+"@types/node@npm:*":
   version: 13.11.1
   resolution: "@types/node@npm:13.11.1"
   checksum: 2/0ced8498fb982d1275ce4f2e13554243d53386315e57de641d934fddeb02d86bc745c2c6b2aacad1072f081b0984d5f3beb81d309823202ec6cf8653f6d8100b
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^13.13.0":
+  version: 13.13.1
+  resolution: "@types/node@npm:13.13.1"
+  checksum: 2/f0afea7a32a6a69463a4af16a8f821773987411d1158de2c6ef9b0a70d6724bb199328788086d9727295b2a94272ee9711162cd0e5c61960da71b04ca008d4ab
   languageName: node
   linkType: hard
 
@@ -2049,6 +2063,39 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: 2/69fab507de3b407ee73c19e1ab6122a687c34000e1448e871e8ea24ca471ab3e54c320489718c1f79692cfa9676594ba22b7246a79c2d72c09132c245221b9fb
+  languageName: node
+  linkType: hard
+
+"@types/react-redux@npm:^7.1.7":
+  version: 7.1.7
+  resolution: "@types/react-redux@npm:7.1.7"
+  dependencies:
+    "@types/hoist-non-react-statics": ^3.3.0
+    "@types/react": "*"
+    hoist-non-react-statics: ^3.3.0
+    redux: ^4.0.0
+  checksum: 2/c0913bc318af8e3c63d30deeb4c57a9b05f8b82edfa7e62bd26f7c337464d6fc5ebf0b7477ce6b75e827a69f0a85b4eb825b1c167db48c0f8d54a86584de5124
+  languageName: node
+  linkType: hard
+
+"@types/react-router-dom@npm:^5.1.4":
+  version: 5.1.4
+  resolution: "@types/react-router-dom@npm:5.1.4"
+  dependencies:
+    "@types/history": "*"
+    "@types/react": "*"
+    "@types/react-router": "*"
+  checksum: 2/49a2492e2c683aac3f1cf7ba8b7c6194ac296904479c3e0f61553eb355dd238e6cc540d4cf06d4c0798a832ab2b9a69d4e0f4d2fdb98b0d04cb38063b5ff894a
+  languageName: node
+  linkType: hard
+
+"@types/react-router@npm:*":
+  version: 5.1.5
+  resolution: "@types/react-router@npm:5.1.5"
+  dependencies:
+    "@types/history": "*"
+    "@types/react": "*"
+  checksum: 2/4fa6123c6905a9df6700fcb07498001b90ae95cbff24a254a68b36cd1306e82afdec8f2e5ad4373c21c71b033917f73e00937b0a3249244548ded2ffebf04598
   languageName: node
   linkType: hard
 
@@ -2652,15 +2699,18 @@ __metadata:
     "@testing-library/react": ^9.5.0
     "@testing-library/user-event": ^7.2.1
     "@types/jest": ^25.2.1
-    "@types/node": ^13.11.1
+    "@types/node": ^13.13.0
     "@types/react": ^16.9.34
     "@types/react-dom": ^16.9.6
+    "@types/react-redux": ^7.1.7
+    "@types/react-router-dom": ^5.1.4
     "@types/styled-components": ^5.1.0
     axios: ^0.19.2
     moment: ^2.24.0
     prettier: ^2.0.4
     react: ^16.13.1
     react-dom: ^16.13.1
+    react-is: ^16.13.1
     react-redux: ^7.2.0
     react-router-dom: ^5.1.2
     react-scripts: 3.4.1
@@ -11633,7 +11683,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-is@npm:^16.12.0, react-is@npm:^16.6.0, react-is@npm:^16.7.0, react-is@npm:^16.8.1, react-is@npm:^16.8.4, react-is@npm:^16.9.0":
+"react-is@npm:^16.12.0, react-is@npm:^16.13.1, react-is@npm:^16.6.0, react-is@npm:^16.7.0, react-is@npm:^16.8.1, react-is@npm:^16.8.4, react-is@npm:^16.9.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: 2/11bcf1267a314a522615f626f3ce3727a3a24cdbf61c4d452add3550a7875326669631326cfb1ba3e92b6f72244c32ffecf93ad21c0cad8455d3e169d0e3f060
@@ -11930,7 +11980,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"redux@npm:^4.0.5":
+"redux@npm:^4.0.0, redux@npm:^4.0.5":
   version: 4.0.5
   resolution: "redux@npm:4.0.5"
   dependencies:

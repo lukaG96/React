@@ -41,6 +41,9 @@ function Navbar() {
           <MenuLink>
             <NavLink to="/AllPlayers">All Players</NavLink>
           </MenuLink>
+          <MenuLink>
+            <NavLink to="/Login">Login</NavLink>
+          </MenuLink>
         </NavRight>
       </NavHeader>
     </Nav>
