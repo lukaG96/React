@@ -2,35 +2,39 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://balldontlie.io",
   "dependencies": {
     "@reach/router": "^1.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "babel-types": "^6.26.0",
+    "cors": "^2.8.5",
     "moment": "^2.24.0",
     "prettier": "^2.0.4",
-    "react": "^16.13.1",
+    "react": "^16.8.3",
     "react-dom": "^16.13.1",
+<<<<<<< HEAD
     "react-is": "^16.13.1",
+=======
+    "react-is": ">= 16.8.0",
+>>>>>>> addParcel
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1",
-    "redux": "^4.0.5",
+    "redux": "^2.0.0 || ^3.0.0 || ^4.0.0-0",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "parcel src/index.html -p 3000",
+    "prebuild": "rm -rf dist/",
+    "build": "parcel build src/index.html",
     "format": "prettier \"src/**/*.{js,html}\" --write",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
   },
+  "proxy": "https://balldontlie.io/",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -47,6 +51,7 @@
     ]
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.0",
     "@types/react": "^16.9.34",
@@ -55,5 +60,10 @@
     "@types/react-router-dom": "^5.1.4",
     "@types/styled-components": "^5.1.0",
     "typescript": "^3.8.3"
+=======
+    "@babel/core": "^7.9.0",
+    "babel-preset-react-app": "^9.1.2",
+    "parcel-bundler": "^1.12.4"
+>>>>>>> addParcel
   }
 }
