@@ -61,7 +61,7 @@ function TeamDetails(props) {
   }
   function fetchTeamScore(teamId) {
     axios
-      .get("/api/v1/games?seasons[]=2018&seasons[]=2017&team_ids[]=" + teamId)
+      .get("api/v1/games?seasons[]=2018&seasons[]=2017&team_ids[]=" + teamId)
       .then((response) => {
         let scores = response.data.data;
         setTeamScore({ message: "Success", data: scores });

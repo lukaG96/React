@@ -27,7 +27,7 @@ export const fetchPlayers = () => {
   return (dispatch) => {
     dispatch(fetchPlayersRequest());
     axios
-      .get("/api/v1/players")
+      .get("api/v1/players")
       .then((response) => {
         const players = response.data.data;
         dispatch(fetchPlayersSuccess(players));

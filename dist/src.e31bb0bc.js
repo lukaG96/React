@@ -36361,7 +36361,7 @@ const fetchTeams = () => {
   return dispatch => {
     dispatch(fetchTeamsRequest());
 
-    _axios.default.get("https://balldontlie.io/api/v1/teams").then(response => {
+    _axios.default.get("api/v1/teams").then(response => {
       const teams = response.data.data;
       dispatch(fetchTeamsSuccess(teams));
     }).catch(error => {
@@ -36430,7 +36430,7 @@ const fetchPlayers = () => {
   return dispatch => {
     dispatch(fetchPlayersRequest());
 
-    _axios.default.get("/api/v1/players").then(response => {
+    _axios.default.get("api/v1/players").then(response => {
       const players = response.data.data;
       dispatch(fetchPlayersSuccess(players));
     }).catch(error => {
@@ -44435,7 +44435,7 @@ function TeamDetails(props) {
   }
 
   function fetchTeamScore(teamId) {
-    _axios.default.get("/api/v1/games?seasons[]=2018&seasons[]=2017&team_ids[]=" + teamId).then(response => {
+    _axios.default.get("api/v1/games?seasons[]=2018&seasons[]=2017&team_ids[]=" + teamId).then(response => {
       let scores = response.data.data;
       setTeamScore({
         message: "Success",
@@ -45247,7 +45247,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61952" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57668" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

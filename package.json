@@ -2,7 +2,6 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://balldontlie.io",
   "dependencies": {
     "@reach/router": "^1.3.3",
     "@testing-library/jest-dom": "^4.2.4",
@@ -10,6 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "babel-types": "^6.26.0",
+    "cors": "^2.8.5",
     "moment": "^2.24.0",
     "prettier": "^2.0.4",
     "react": "^16.8.3",
@@ -30,6 +30,7 @@
     "format": "prettier \"src/**/*.{js,html}\" --write",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
   },
+  "proxy": "https://balldontlie.io/",
   "eslintConfig": {
     "extends": "react-app"
   },

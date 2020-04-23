@@ -27,7 +27,7 @@ export const fetchTeams = () => {
   return (dispatch) => {
     dispatch(fetchTeamsRequest());
     axios
-      .get("https://balldontlie.io/api/v1/teams")
+      .get("api/v1/teams")
       .then((response) => {
         const teams = response.data.data;
         dispatch(fetchTeamsSuccess(teams));
