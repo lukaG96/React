@@ -10,7 +10,7 @@ import {
   MenuLink,
 } from "../_styledComponents/navBar";
 
-function Navbar() {
+const Navbar = () => {
   // return (
   //   <nav>
   //     <div className="container">
@@ -48,6 +48,6 @@ function Navbar() {
       </NavHeader>
     </Nav>
   );
-}
+};
 
 export default Navbar;

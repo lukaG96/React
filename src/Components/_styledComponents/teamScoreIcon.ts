@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PlayerIconWrapper = styled.div`
+export const TeamScoreIconWrapper = styled.div`
   overflow: hidden;
   padding: 0 0 32px;
   margin: 20px;
@@ -22,12 +22,12 @@ export const CardBody = styled.div`
   padding-right: 32px;
   padding-left: 32px;
 `;
-export const CardImage = styled.div`
+export const CardImage = styled.div<{ imgUrl: string }>`
   width: 100%;
   height: 200px;
   background-repeat: no-repeat;
   background-size: 200px 200px;
-  background-image: url(${(props) => props.imgUrl});
+  background-image: url(${({ imgUrl }) => imgUrl});
   margin-bottom: 35px;
 `;
 export const CardFieldset = styled.fieldset`

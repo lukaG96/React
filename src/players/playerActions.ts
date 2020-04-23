@@ -10,13 +10,13 @@ export const fetchPlayersRequest = () => {
     type: FETCH_PLAYERS_REQUEST,
   };
 };
-export const fetchPlayersSuccess = (players) => {
+export const fetchPlayersSuccess = (players: any) => {
   return {
     type: FETCH_PLAYERS_SUCCESS,
     payload: players,
   };
 };
-export const fetchPlayersFailure = (errors) => {
+export const fetchPlayersFailure = (errors: string) => {
   return {
     type: FETCH_PLAYERS_FAILURE,
     payload: errors,
@@ -24,7 +24,7 @@ export const fetchPlayersFailure = (errors) => {
 };
 
 export const fetchPlayers = () => {
-  return (dispatch) => {
+  return (dispatch: any) => {
     dispatch(fetchPlayersRequest());
     axios
       .get("/api/v1/players")

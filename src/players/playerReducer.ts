@@ -10,7 +10,7 @@ const startState = {
   error: "",
 };
 
-const playerReducer = (state = startState, action) => {
+const playerReducer = (state = startState, action: any) => {
   switch (action.type) {
     case FETCH_PLAYERS_REQUEST:
       return {

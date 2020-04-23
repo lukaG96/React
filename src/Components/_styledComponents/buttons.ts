@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+export type ButtonProps = {
+  noBorder: boolean;
+  btnColor: string;
+  size: string;
+  block: boolean;
+};
+
+const Button = styled.button<ButtonProps>`
   margin-top: 30px;
   width: 100%;
   padding: 12px 0;
@@ -11,14 +18,14 @@ const Button = styled.button`
   border-radius: 35px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
   transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
-  border: ${(props) => (props.noBorder ? "0" : "1px solid white")};
+  border: ${({ noBorder }) => (noBorder ? "0" : "1px solid white")};
   &:hover {
     box-shadow: 0 15px 15px rgba(0, 0, 0, 0.16);
     transform: translate(0, -5px);
     cursor: pointer;
   }
-  ${(props) => {
-    switch (props.btnColor) {
+  ${({ btnColor }) => {
+    switch (btnColor) {
       case "info":
         return "background-color: #00d4ff;";
       case "success":
@@ -29,8 +36,8 @@ const Button = styled.button`
         return "background-color: #878e8f;";
     }
   }}
-  ${(props) => {
-    switch (props.size) {
+  ${({ size }) => {
+    switch (size) {
       case "lg":
         return "font-size: 15px;";
       case "sm":
@@ -39,12 +46,13 @@ const Button = styled.button`
         return "font-size: 8px;";
     }
   }}
-  ${(props) => {
-    if (props.block)
-      return `
-            display:block;         
+${({ block }) => {
+  if (block) {
+    return `
+            display:block;
         `;
-  }} 
+  }
+}}
 `;
 
 export default Button;
