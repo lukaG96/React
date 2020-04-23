@@ -36304,20 +36304,20 @@ module.exports.default = axios;
 
 },{"./utils":"../node_modules/axios/lib/utils.js","./helpers/bind":"../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"../node_modules/axios/lib/core/mergeConfig.js","./defaults":"../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"../node_modules/axios/lib/helpers/spread.js"}],"../node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"teams/teamTypes.js":[function(require,module,exports) {
+},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"teams/teamTypes.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.FETCH_TEAMS_FAILURE = exports.FETCH_TEAMS_SUCCESS = exports.FETCH_TEAMS_REQUEST = void 0;
-const FETCH_TEAMS_REQUEST = "FETCH_TEAMS_REQUEST";
+var FETCH_TEAMS_REQUEST = "FETCH_TEAMS_REQUEST";
 exports.FETCH_TEAMS_REQUEST = FETCH_TEAMS_REQUEST;
-const FETCH_TEAMS_SUCCESS = "FETCH_TEAMS_SUCCESS";
+var FETCH_TEAMS_SUCCESS = "FETCH_TEAMS_SUCCESS";
 exports.FETCH_TEAMS_SUCCESS = FETCH_TEAMS_SUCCESS;
-const FETCH_TEAMS_FAILURE = "FETCH_TEAMS_FAILURE";
+var FETCH_TEAMS_FAILURE = "FETCH_TEAMS_FAILURE";
 exports.FETCH_TEAMS_FAILURE = FETCH_TEAMS_FAILURE;
-},{}],"teams/teamActions.js":[function(require,module,exports) {
+},{}],"teams/teamActions.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36331,7 +36331,7 @@ var _teamTypes = require("./teamTypes");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const fetchTeamsRequest = () => {
+var fetchTeamsRequest = function () {
   return {
     type: _teamTypes.FETCH_TEAMS_REQUEST
   };
@@ -36339,7 +36339,7 @@ const fetchTeamsRequest = () => {
 
 exports.fetchTeamsRequest = fetchTeamsRequest;
 
-const fetchTeamsSuccess = teams => {
+var fetchTeamsSuccess = function (teams) {
   return {
     type: _teamTypes.FETCH_TEAMS_SUCCESS,
     payload: teams
@@ -36348,7 +36348,7 @@ const fetchTeamsSuccess = teams => {
 
 exports.fetchTeamsSuccess = fetchTeamsSuccess;
 
-const fetchTeamsFailure = errors => {
+var fetchTeamsFailure = function (errors) {
   return {
     type: _teamTypes.FETCH_TEAMS_FAILURE,
     payload: errors
@@ -36357,36 +36357,35 @@ const fetchTeamsFailure = errors => {
 
 exports.fetchTeamsFailure = fetchTeamsFailure;
 
-const fetchTeams = () => {
-  return dispatch => {
+var fetchTeams = function () {
+  return function (dispatch) {
     dispatch(fetchTeamsRequest());
 
-    _axios.default.get("api/v1/teams").then(response => {
-      const teams = response.data.data;
+    _axios.default.get("/api/v1/teams").then(function (response) {
+      var teams = response.data.data;
       dispatch(fetchTeamsSuccess(teams));
-    }).catch(error => {
-      const errorMessage = error.Message;
+    }).catch(function (error) {
+      var errorMessage = error.Message;
       dispatch(fetchTeamsFailure(errorMessage));
     });
   };
-}; //test
-
+};
 
 exports.fetchTeams = fetchTeams;
-},{"axios":"../node_modules/axios/index.js","./teamTypes":"teams/teamTypes.js"}],"players/playerTypes.js":[function(require,module,exports) {
+},{"axios":"../node_modules/axios/index.js","./teamTypes":"teams/teamTypes.tsx"}],"players/playerTypes.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.FETCH_PLAYERS_FAILURE = exports.FETCH_PLAYERS_SUCCESS = exports.FETCH_PLAYERS_REQUEST = void 0;
-const FETCH_PLAYERS_REQUEST = "FETCH_PLAYERS_REQUEST";
+var FETCH_PLAYERS_REQUEST = "FETCH_PLAYERS_REQUEST";
 exports.FETCH_PLAYERS_REQUEST = FETCH_PLAYERS_REQUEST;
-const FETCH_PLAYERS_SUCCESS = "FETCH_PLAYERS_SUCCESS";
+var FETCH_PLAYERS_SUCCESS = "FETCH_PLAYERS_SUCCESS";
 exports.FETCH_PLAYERS_SUCCESS = FETCH_PLAYERS_SUCCESS;
-const FETCH_PLAYERS_FAILURE = "FETCH_PLAYERS_FAILURE";
+var FETCH_PLAYERS_FAILURE = "FETCH_PLAYERS_FAILURE";
 exports.FETCH_PLAYERS_FAILURE = FETCH_PLAYERS_FAILURE;
-},{}],"players/playerActions.js":[function(require,module,exports) {
+},{}],"players/playerActions.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36400,7 +36399,7 @@ var _playerTypes = require("./playerTypes");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const fetchPlayersRequest = () => {
+var fetchPlayersRequest = function () {
   return {
     type: _playerTypes.FETCH_PLAYERS_REQUEST
   };
@@ -36408,7 +36407,7 @@ const fetchPlayersRequest = () => {
 
 exports.fetchPlayersRequest = fetchPlayersRequest;
 
-const fetchPlayersSuccess = players => {
+var fetchPlayersSuccess = function (players) {
   return {
     type: _playerTypes.FETCH_PLAYERS_SUCCESS,
     payload: players
@@ -36417,7 +36416,7 @@ const fetchPlayersSuccess = players => {
 
 exports.fetchPlayersSuccess = fetchPlayersSuccess;
 
-const fetchPlayersFailure = errors => {
+var fetchPlayersFailure = function (errors) {
   return {
     type: _playerTypes.FETCH_PLAYERS_FAILURE,
     payload: errors
@@ -36426,22 +36425,22 @@ const fetchPlayersFailure = errors => {
 
 exports.fetchPlayersFailure = fetchPlayersFailure;
 
-const fetchPlayers = () => {
-  return dispatch => {
+var fetchPlayers = function () {
+  return function (dispatch) {
     dispatch(fetchPlayersRequest());
 
-    _axios.default.get("api/v1/players").then(response => {
-      const players = response.data.data;
+    _axios.default.get("/api/v1/players").then(function (response) {
+      var players = response.data.data;
       dispatch(fetchPlayersSuccess(players));
-    }).catch(error => {
-      const errorMessage = error.Message;
+    }).catch(function (error) {
+      var errorMessage = error.Message;
       dispatch(fetchPlayersFailure(errorMessage));
     });
   };
 };
 
 exports.fetchPlayers = fetchPlayers;
-},{"axios":"../node_modules/axios/index.js","./playerTypes":"players/playerTypes.js"}],"redux/index.js":[function(require,module,exports) {
+},{"axios":"../node_modules/axios/index.js","./playerTypes":"players/playerTypes.ts"}],"redux/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36471,7 +36470,7 @@ Object.keys(_playerActions).forEach(function (key) {
     }
   });
 });
-},{"../teams/teamActions":"teams/teamActions.js","../players/playerActions":"players/playerActions.js"}],"../node_modules/shallowequal/index.js":[function(require,module,exports) {
+},{"../teams/teamActions":"teams/teamActions.tsx","../players/playerActions":"players/playerActions.ts"}],"../node_modules/shallowequal/index.js":[function(require,module,exports) {
 //
 
 module.exports = function shallowEqual(objA, objB, compare, compareContext) {
@@ -39214,7 +39213,7 @@ if ("development" !== 'production' && "development" !== 'test' && typeof window 
 
 var _default = styled;
 exports.default = _default;
-},{"react-is":"../node_modules/react-is/index.js","react":"../node_modules/react/index.js","shallowequal":"../node_modules/shallowequal/index.js","@emotion/stylis":"../node_modules/@emotion/stylis/dist/stylis.browser.esm.js","@emotion/unitless":"../node_modules/@emotion/unitless/dist/unitless.browser.esm.js","@emotion/is-prop-valid":"../node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","hoist-non-react-statics":"../node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","process":"../node_modules/process/browser.js"}],"Components/_styledComponents/buttons.js":[function(require,module,exports) {
+},{"react-is":"../node_modules/react-is/index.js","react":"../node_modules/react/index.js","shallowequal":"../node_modules/shallowequal/index.js","@emotion/stylis":"../node_modules/@emotion/stylis/dist/stylis.browser.esm.js","@emotion/unitless":"../node_modules/@emotion/unitless/dist/unitless.browser.esm.js","@emotion/is-prop-valid":"../node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","hoist-non-react-statics":"../node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","process":"../node_modules/process/browser.js"}],"Components/_styledComponents/buttons.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39226,25 +39225,25 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Button = _styledComponents.default.button`
-  margin-top: 30px;
-  width: 100%;
-  padding: 12px 0;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
-  border-radius: 35px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
-  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
-  border: ${props => props.noBorder ? "0" : "1px solid white"};
-  &:hover {
-    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.16);
-    transform: translate(0, -5px);
-    cursor: pointer;
+var __makeTemplateObject = void 0 && (void 0).__makeTemplateObject || function (cooked, raw) {
+  if (Object.defineProperty) {
+    Object.defineProperty(cooked, "raw", {
+      value: raw
+    });
+  } else {
+    cooked.raw = raw;
   }
-  ${props => {
-  switch (props.btnColor) {
+
+  return cooked;
+};
+
+var Button = _styledComponents.default.button(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  margin-top: 30px;\n  width: 100%;\n  padding: 12px 0;\n  font-family: inherit;\n  font-size: 14px;\n  font-weight: 700;\n  color: #fff;\n  border-radius: 35px;\n  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);\n  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);\n  border: ", ";\n  &:hover {\n    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.16);\n    transform: translate(0, -5px);\n    cursor: pointer;\n  }\n  ", "\n  ", "\n", "\n"], ["\n  margin-top: 30px;\n  width: 100%;\n  padding: 12px 0;\n  font-family: inherit;\n  font-size: 14px;\n  font-weight: 700;\n  color: #fff;\n  border-radius: 35px;\n  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);\n  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);\n  border: ", ";\n  &:hover {\n    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.16);\n    transform: translate(0, -5px);\n    cursor: pointer;\n  }\n  ", "\n  ", "\n", "\n"])), function (_a) {
+  var noBorder = _a.noBorder;
+  return noBorder ? "0" : "1px solid white";
+}, function (_a) {
+  var btnColor = _a.btnColor;
+
+  switch (btnColor) {
     case "info":
       return "background-color: #00d4ff;";
 
@@ -39257,9 +39256,10 @@ const Button = _styledComponents.default.button`
     default:
       return "background-color: #878e8f;";
   }
-}}
-  ${props => {
-  switch (props.size) {
+}, function (_a) {
+  var size = _a.size;
+
+  switch (size) {
     case "lg":
       return "font-size: 15px;";
 
@@ -39269,16 +39269,18 @@ const Button = _styledComponents.default.button`
     default:
       return "font-size: 8px;";
   }
-}}
-  ${props => {
-  if (props.block) return `
-            display:block;         
-        `;
-}} 
-`;
+}, function (_a) {
+  var block = _a.block;
+
+  if (block) {
+    return "\n            display:block;\n        ";
+  }
+});
+
 var _default = Button;
 exports.default = _default;
-},{"styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/_styledComponents/teamIcon.js":[function(require,module,exports) {
+var templateObject_1;
+},{"styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/_styledComponents/teamIcon.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39290,70 +39292,50 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const TeamIconWrapper = _styledComponents.default.div`
-  overflow: hidden;
-  padding: 0 0 32px;
-  margin: 20px;
-  width: 300px;
-  font-family: Quicksand, arial, sans-serif;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
-  border-radius: 5px;
-`;
+var __makeTemplateObject = void 0 && (void 0).__makeTemplateObject || function (cooked, raw) {
+  if (Object.defineProperty) {
+    Object.defineProperty(cooked, "raw", {
+      value: raw
+    });
+  } else {
+    cooked.raw = raw;
+  }
+
+  return cooked;
+};
+
+var TeamIconWrapper = _styledComponents.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  overflow: hidden;\n  padding: 0 0 32px;\n  margin: 20px;\n  width: 300px;\n  font-family: Quicksand, arial, sans-serif;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);\n  border-radius: 5px;\n"], ["\n  overflow: hidden;\n  padding: 0 0 32px;\n  margin: 20px;\n  width: 300px;\n  font-family: Quicksand, arial, sans-serif;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);\n  border-radius: 5px;\n"])));
+
 exports.TeamIconWrapper = TeamIconWrapper;
-const CardHeader = _styledComponents.default.header`
-  padding-top: 32px;
-  padding-bottom: 32px;
-`;
+
+var CardHeader = _styledComponents.default.header(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  padding-top: 32px;\n  padding-bottom: 32px;\n"], ["\n  padding-top: 32px;\n  padding-bottom: 32px;\n"])));
+
 exports.CardHeader = CardHeader;
-const CardHeading = _styledComponents.default.h1`
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-`;
+
+var CardHeading = _styledComponents.default.h1(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  font-size: 24px;\n  font-weight: bold;\n  text-align: center;\n"], ["\n  font-size: 24px;\n  font-weight: bold;\n  text-align: center;\n"])));
+
 exports.CardHeading = CardHeading;
-const CardBody = _styledComponents.default.div`
-  padding-right: 32px;
-  padding-left: 32px;
-`;
+
+var CardBody = _styledComponents.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  padding-right: 32px;\n  padding-left: 32px;\n"], ["\n  padding-right: 32px;\n  padding-left: 32px;\n"])));
+
 exports.CardBody = CardBody;
-const CardImage = _styledComponents.default.div`
-  width: 100%;
-  height: 200px;
-  background-repeat: no-repeat;
-  background-size: 200px 200px;
-  background-image: url(${props => props.imgUrl});
-  margin-bottom: 35px;
-`;
+
+var CardImage = _styledComponents.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  width: 100%;\n  height: 200px;\n  background-repeat: no-repeat;\n  background-size: 200px 200px;\n  background-image: url(", ");\n  margin-bottom: 35px;\n"], ["\n  width: 100%;\n  height: 200px;\n  background-repeat: no-repeat;\n  background-size: 200px 200px;\n  background-image: url(", ");\n  margin-bottom: 35px;\n"])), function (_a) {
+  var imgUrl = _a.imgUrl;
+  return imgUrl;
+});
+
 exports.CardImage = CardImage;
-const CardFieldset = _styledComponents.default.fieldset`
-  position: relative;
-  padding: 0;
-  margin: 0;
-  border: 0;
 
-  & + & {
-    margin-top: 24px;
-  }
+var CardFieldset = _styledComponents.default.fieldset(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  position: relative;\n  padding: 0;\n  margin: 0;\n  border: 0;\n\n  & + & {\n    margin-top: 24px;\n  }\n\n  &:nth-last-of-type(2) {\n    margin-top: 32px;\n  }\n\n  &:last-of-type {\n    text-align: center;\n  }\n"], ["\n  position: relative;\n  padding: 0;\n  margin: 0;\n  border: 0;\n\n  & + & {\n    margin-top: 24px;\n  }\n\n  &:nth-last-of-type(2) {\n    margin-top: 32px;\n  }\n\n  &:last-of-type {\n    text-align: center;\n  }\n"])));
 
-  &:nth-last-of-type(2) {
-    margin-top: 32px;
-  }
-
-  &:last-of-type {
-    text-align: center;
-  }
-`;
 exports.CardFieldset = CardFieldset;
-const CardOptionsNote = _styledComponents.default.small`
-  padding-top: 8px;
-  display: block;
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  text-transform: uppercase;
-`;
+
+var CardOptionsNote = _styledComponents.default.small(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  padding-top: 8px;\n  display: block;\n  width: 100%;\n  font-size: 12px;\n  text-align: center;\n  text-transform: uppercase;\n"], ["\n  padding-top: 8px;\n  display: block;\n  width: 100%;\n  font-size: 12px;\n  text-align: center;\n  text-transform: uppercase;\n"])));
+
 exports.CardOptionsNote = CardOptionsNote;
-},{"styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/teams/TeamIcon.js":[function(require,module,exports) {
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7;
+},{"styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/teams/TeamIcon.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39369,156 +39351,30 @@ var _reactRouterDom = require("react-router-dom");
 
 var _teamIcon = require("../_styledComponents/teamIcon");
 
-var _jsxFileName = "C:\\Users\\Korisnik\\Desktop\\REACT\\ReactMyApp\\app\\src\\Components\\teams\\TeamIcon.js";
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function TeamIcon({
-  team,
-  fullData,
-  showBtn
-}) {
-  return /*#__PURE__*/_react.default.createElement(_teamIcon.TeamIconWrapper, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16,
-      columnNumber: 5
-    }
-  }, /*#__PURE__*/_react.default.createElement(_teamIcon.CardHeader, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 7
-    }
-  }, /*#__PURE__*/_react.default.createElement(_teamIcon.CardHeading, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18,
-      columnNumber: 9
-    }
-  }, team.name)), /*#__PURE__*/_react.default.createElement(_teamIcon.CardBody, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20,
-      columnNumber: 7
-    }
-  }, /*#__PURE__*/_react.default.createElement(_teamIcon.CardImage, {
-    imgUrl: "https://a.espncdn.com/i/teamlogos/nba/500/bos.png",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21,
-      columnNumber: 9
-    }
-  }), /*#__PURE__*/_react.default.createElement(_teamIcon.CardFieldset, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 9
-    }
-  }, /*#__PURE__*/_react.default.createElement(_teamIcon.CardOptionsNote, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 11
-    }
-  }, /*#__PURE__*/_react.default.createElement("b", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24,
-      columnNumber: 13
-    }
-  }, "Full name:"), " ", team.full_name), /*#__PURE__*/_react.default.createElement(_teamIcon.CardOptionsNote, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 26,
-      columnNumber: 11
-    }
-  }, /*#__PURE__*/_react.default.createElement("b", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27,
-      columnNumber: 13
-    }
-  }, "Division:"), " ", team.division), fullData ? /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_teamIcon.CardOptionsNote, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 15
-    }
-  }, /*#__PURE__*/_react.default.createElement("b", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33,
-      columnNumber: 17
-    }
-  }, "Conference:"), " ", team.conference), /*#__PURE__*/_react.default.createElement(_teamIcon.CardOptionsNote, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36,
-      columnNumber: 15
-    }
-  }, /*#__PURE__*/_react.default.createElement("b", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 17
-    }
-  }, "Abbreviation:"), " ", team.abbreviation), /*#__PURE__*/_react.default.createElement(_teamIcon.CardOptionsNote, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 15
-    }
-  }, /*#__PURE__*/_react.default.createElement("b", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 41,
-      columnNumber: 17
-    }
-  }, "City:"), " ", team.city)) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null)), showBtn ? /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+var TeamIcon = function (_a) {
+  var team = _a.team,
+      fullData = _a.fullData,
+      showBtn = _a.showBtn;
+  return _react.default.createElement(_teamIcon.TeamIconWrapper, null, _react.default.createElement(_teamIcon.CardHeader, null, _react.default.createElement(_teamIcon.CardHeading, null, team.name)), _react.default.createElement(_teamIcon.CardBody, null, _react.default.createElement(_teamIcon.CardImage, {
+    imgUrl: "https://a.espncdn.com/i/teamlogos/nba/500/bos.png"
+  }), _react.default.createElement(_teamIcon.CardFieldset, null, _react.default.createElement(_teamIcon.CardOptionsNote, null, _react.default.createElement("b", null, "Full name:"), " ", team.full_name), _react.default.createElement(_teamIcon.CardOptionsNote, null, _react.default.createElement("b", null, "Division:"), " ", team.division), fullData ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_teamIcon.CardOptionsNote, null, _react.default.createElement("b", null, "Conference:"), " ", team.conference), _react.default.createElement(_teamIcon.CardOptionsNote, null, _react.default.createElement("b", null, "Abbreviation:"), " ", team.abbreviation), _react.default.createElement(_teamIcon.CardOptionsNote, null, _react.default.createElement("b", null, "City:"), " ", team.city)) : _react.default.createElement(_react.default.Fragment, null)), showBtn ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactRouterDom.Link, {
     to: "/details/" + team.id,
     style: {
       textDecoration: "none"
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 50,
-      columnNumber: 13
     }
-  }, /*#__PURE__*/_react.default.createElement(_buttons.default, {
+  }, _react.default.createElement(_buttons.default, {
     noBorder: true,
     block: true,
     size: "lg",
-    btnColor: "danger",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 51,
-      columnNumber: 15
-    }
-  }, "Details"))) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null)));
-}
+    btnColor: "danger"
+  }, "Details"))) : _react.default.createElement(_react.default.Fragment, null)));
+};
 
 var _default = TeamIcon;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../_styledComponents/buttons":"Components/_styledComponents/buttons.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../_styledComponents/teamIcon":"Components/_styledComponents/teamIcon.js"}],"Components/_styledComponents/flexContainer.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../_styledComponents/buttons":"Components/_styledComponents/buttons.ts","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../_styledComponents/teamIcon":"Components/_styledComponents/teamIcon.tsx"}],"Components/_styledComponents/flexContainer.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39530,13 +39386,23 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const FlexContainer = _styledComponents.default.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
+var __makeTemplateObject = void 0 && (void 0).__makeTemplateObject || function (cooked, raw) {
+  if (Object.defineProperty) {
+    Object.defineProperty(cooked, "raw", {
+      value: raw
+    });
+  } else {
+    cooked.raw = raw;
+  }
+
+  return cooked;
+};
+
+var FlexContainer = _styledComponents.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n"], ["\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n"])));
+
 exports.FlexContainer = FlexContainer;
-},{"styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/teams/Team.js":[function(require,module,exports) {
+var templateObject_1;
+},{"styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/teams/Team.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39554,18 +39420,20 @@ var _TeamIcon = _interopRequireDefault(require("./TeamIcon"));
 
 var _flexContainer = require("../_styledComponents/flexContainer");
 
-var _jsxFileName = "C:\\Users\\Korisnik\\Desktop\\REACT\\ReactMyApp\\app\\src\\Components\\teams\\Team.js";
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+// import { RootState } from "../../redux/store.js";
+// import { TeamModel } from "../../Models/teamDTO";
 function Team() {
-  const teams = (0, _reactRedux.useSelector)(state => state.teamsKey);
-  const dispatch = (0, _reactRedux.useDispatch)();
-  (0, _react.useEffect)(() => {
+  var teams = (0, _reactRedux.useSelector)(function (state) {
+    return state.teamsKey;
+  });
+  var dispatch = (0, _reactRedux.useDispatch)();
+  (0, _react.useEffect)(function () {
     dispatch((0, _index.fetchTeams)()); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // return teams.loading ? (
   //   <h2>Loading data</h2>
@@ -39573,30 +39441,19 @@ function Team() {
   //   <h2>{teams.errors}</h2>
   //   ) :
 
-  return /*#__PURE__*/_react.default.createElement(_flexContainer.FlexContainer, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 5
-    }
-  }, teams && teams.teams && teams.teams.map(team => /*#__PURE__*/_react.default.createElement(_TeamIcon.default, {
-    key: team.id,
-    team: team,
-    fullData: false,
-    showBtn: true,
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 26,
-      columnNumber: 11
-    }
-  })));
+  return _react.default.createElement(_flexContainer.FlexContainer, null, teams && teams.teams && teams.teams.map(function (team) {
+    return _react.default.createElement(_TeamIcon.default, {
+      key: team.id,
+      team: team,
+      fullData: false,
+      showBtn: true
+    });
+  }));
 }
 
 var _default = Team;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","../../redux/index":"redux/index.js","./TeamIcon":"Components/teams/TeamIcon.js","../_styledComponents/flexContainer":"Components/_styledComponents/flexContainer.js"}],"../node_modules/moment/moment.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","../../redux/index":"redux/index.js","./TeamIcon":"Components/teams/TeamIcon.tsx","../_styledComponents/flexContainer":"Components/_styledComponents/flexContainer.ts"}],"../node_modules/moment/moment.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 //! moment.js
@@ -44202,7 +44059,7 @@ var global = arguments[3];
 
 })));
 
-},{}],"Components/_styledComponents/teamScoreIcon.js":[function(require,module,exports) {
+},{}],"Components/_styledComponents/teamScoreIcon.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44214,69 +44071,49 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const TeamScoreIconWrapper = _styledComponents.default.div`
-  overflow: hidden;
-  padding: 0 0 32px;
-  margin: 20px;
-  width: 300px;
-  font-family: Quicksand, arial, sans-serif;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
-  border-radius: 5px;
-`;
+var __makeTemplateObject = void 0 && (void 0).__makeTemplateObject || function (cooked, raw) {
+  if (Object.defineProperty) {
+    Object.defineProperty(cooked, "raw", {
+      value: raw
+    });
+  } else {
+    cooked.raw = raw;
+  }
+
+  return cooked;
+};
+
+var TeamScoreIconWrapper = _styledComponents.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  overflow: hidden;\n  padding: 0 0 32px;\n  margin: 20px;\n  width: 300px;\n  font-family: Quicksand, arial, sans-serif;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);\n  border-radius: 5px;\n"], ["\n  overflow: hidden;\n  padding: 0 0 32px;\n  margin: 20px;\n  width: 300px;\n  font-family: Quicksand, arial, sans-serif;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);\n  border-radius: 5px;\n"])));
+
 exports.TeamScoreIconWrapper = TeamScoreIconWrapper;
-const CardHeader = _styledComponents.default.header`
-  padding-top: 32px;
-  padding-bottom: 32px;
-`;
+
+var CardHeader = _styledComponents.default.header(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  padding-top: 32px;\n  padding-bottom: 32px;\n"], ["\n  padding-top: 32px;\n  padding-bottom: 32px;\n"])));
+
 exports.CardHeader = CardHeader;
-const CardHeading = _styledComponents.default.h1`
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-`;
+
+var CardHeading = _styledComponents.default.h1(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  font-size: 24px;\n  font-weight: bold;\n  text-align: center;\n"], ["\n  font-size: 24px;\n  font-weight: bold;\n  text-align: center;\n"])));
+
 exports.CardHeading = CardHeading;
-const CardBody = _styledComponents.default.div`
-  padding-right: 32px;
-  padding-left: 32px;
-`;
+
+var CardBody = _styledComponents.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  padding-right: 32px;\n  padding-left: 32px;\n"], ["\n  padding-right: 32px;\n  padding-left: 32px;\n"])));
+
 exports.CardBody = CardBody;
-const CardImage = _styledComponents.default.div`
-  width: 100%;
-  height: 200px;
-  background-repeat: no-repeat;
-  background-size: 200px 200px;
-  background-image: url(${props => props.imgUrl});
-  margin-bottom: 35px;
-`;
+
+var CardImage = _styledComponents.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  width: 100%;\n  height: 200px;\n  background-repeat: no-repeat;\n  background-size: 200px 200px;\n  background-image: url(", ");\n  margin-bottom: 35px;\n"], ["\n  width: 100%;\n  height: 200px;\n  background-repeat: no-repeat;\n  background-size: 200px 200px;\n  background-image: url(", ");\n  margin-bottom: 35px;\n"])), function (_a) {
+  var imgUrl = _a.imgUrl;
+  return imgUrl;
+});
+
 exports.CardImage = CardImage;
-const CardFieldset = _styledComponents.default.fieldset`
-  position: relative;
-  padding: 0;
-  margin: 0;
-  border: 0;
 
-  & + & {
-    margin-top: 24px;
-  }
+var CardFieldset = _styledComponents.default.fieldset(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  position: relative;\n  padding: 0;\n  margin: 0;\n  border: 0;\n\n  & + & {\n    margin-top: 24px;\n  }\n\n  &:nth-last-of-type(2) {\n    margin-top: 32px;\n  }\n\n  &:last-of-type {\n    text-align: center;\n  }\n"], ["\n  position: relative;\n  padding: 0;\n  margin: 0;\n  border: 0;\n\n  & + & {\n    margin-top: 24px;\n  }\n\n  &:nth-last-of-type(2) {\n    margin-top: 32px;\n  }\n\n  &:last-of-type {\n    text-align: center;\n  }\n"])));
 
-  &:nth-last-of-type(2) {
-    margin-top: 32px;
-  }
-
-  &:last-of-type {
-    text-align: center;
-  }
-`;
 exports.CardFieldset = CardFieldset;
-const CardOptionsNote = _styledComponents.default.small`
-  padding-top: 8px;
-  display: block;
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  text-transform: uppercase;
-`;
+
+var CardOptionsNote = _styledComponents.default.small(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  padding-top: 8px;\n  display: block;\n  width: 100%;\n  font-size: 12px;\n  text-align: center;\n  text-transform: uppercase;\n"], ["\n  padding-top: 8px;\n  display: block;\n  width: 100%;\n  font-size: 12px;\n  text-align: center;\n  text-transform: uppercase;\n"])));
+
 exports.CardOptionsNote = CardOptionsNote;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7;
 },{"styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/scores/teamScoreIcon.js":[function(require,module,exports) {
 "use strict";
 
@@ -44355,7 +44192,7 @@ function TeamScoreIcon({
 
 var _default = TeamScoreIcon;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","moment":"../node_modules/moment/moment.js","../_styledComponents/teamScoreIcon":"Components/_styledComponents/teamScoreIcon.js"}],"Components/teams/TeamDetails.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","moment":"../node_modules/moment/moment.js","../_styledComponents/teamScoreIcon":"Components/_styledComponents/teamScoreIcon.ts"}],"Components/teams/TeamDetails.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44375,21 +44212,33 @@ var _axios = _interopRequireDefault(require("axios"));
 
 var _teamScoreIcon = _interopRequireDefault(require("../scores/teamScoreIcon"));
 
-var _jsxFileName = "C:\\Users\\Korisnik\\Desktop\\REACT\\ReactMyApp\\app\\src\\Components\\teams\\TeamDetails.js";
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-const startState = {
+var __assign = void 0 && (void 0).__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+
+    return t;
+  };
+
+  return __assign.apply(this, arguments);
+};
+
+var startState = {
   loading: true,
   error: "",
   data: []
 };
 
-const TeamScoreReducer = (state, action) => {
+var TeamScoreReducer = function (state, action) {
   switch (action.message) {
     case "Success":
       return {
@@ -44411,37 +44260,39 @@ const TeamScoreReducer = (state, action) => {
 };
 
 function TeamDetails(props) {
-  const [team, setTeam] = (0, _react.useState)({});
-  const [teamScore, setTeamScore] = (0, _react.useReducer)(TeamScoreReducer, startState);
-  const teamFromRedux = (0, _reactRedux.useSelector)(state => state.teamsKey.teams.find(x => x.id === parseInt(props.match.params.team_id)));
-  (0, _react.useEffect)(() => {
+  var _a = (0, _react.useState)(),
+      team = _a[0],
+      setTeam = _a[1];
+
+  var _b = (0, _react.useReducer)(TeamScoreReducer, startState),
+      teamScore = _b[0],
+      setTeamScore = _b[1];
+
+  var teamFromRedux = (0, _reactRedux.useSelector)(function (state) {
+    return state.teamsKey.teams.find(function (x) {
+      return x.id === parseInt(props.match.params.team_id);
+    });
+  });
+  (0, _react.useEffect)(function () {
     mapTeam();
     fetchTeamScore(teamFromRedux.id); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function mapTeam() {
     if (teamFromRedux) {
-      setTeam({ // id: teamFromRedux.id,
-        // name: teamFromRedux.name,
-        // abbreviation: teamFromRedux.abbreviation,
-        // city: teamFromRedux.city,
-        // conference: teamFromRedux.conference,
-        // division: teamFromRedux.division,
-        // full_name: teamFromRedux.full_name,
-        ...teamFromRedux
-      });
+      setTeam(__assign({}, teamFromRedux));
     } else {//redirect to error page
     }
   }
 
   function fetchTeamScore(teamId) {
-    _axios.default.get("api/v1/games?seasons[]=2018&seasons[]=2017&team_ids[]=" + teamId).then(response => {
-      let scores = response.data.data;
+    _axios.default.get("/api/v1/games?seasons[]=2018&seasons[]=2017&team_ids[]=" + teamId).then(function (response) {
+      var scores = response.data.data;
       setTeamScore({
         message: "Success",
         data: scores
       });
-    }).catch(error => {
+    }).catch(function (error) {
       setTeamScore({
         message: "Error",
         data: error.message
@@ -44451,53 +44302,22 @@ function TeamDetails(props) {
     console.log(teamScore);
   }
 
-  return team ? /*#__PURE__*/_react.default.createElement(_flexContainer.FlexContainer, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 75,
-      columnNumber: 5
-    }
-  }, /*#__PURE__*/_react.default.createElement(_TeamIcon.default, {
+  return team ? _react.default.createElement(_flexContainer.FlexContainer, null, _react.default.createElement(_TeamIcon.default, {
     key: team.id,
     team: team,
     fullData: true,
-    showBtn: false,
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 76,
-      columnNumber: 7
-    }
-  }), /*#__PURE__*/_react.default.createElement(_flexContainer.FlexContainer, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 77,
-      columnNumber: 7
-    }
-  }, teamScore && teamScore.data && teamScore.data.map(score => /*#__PURE__*/_react.default.createElement(_teamScoreIcon.default, {
-    key: score.id,
-    score: score,
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 81,
-      columnNumber: 13
-    }
-  })))) : /*#__PURE__*/_react.default.createElement("div", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 86,
-      columnNumber: 5
-    }
-  }, " no data ");
+    showBtn: false
+  }), _react.default.createElement(_flexContainer.FlexContainer, null, teamScore && teamScore.data && teamScore.data.map(function (score) {
+    return _react.default.createElement(_teamScoreIcon.default, {
+      key: score.id,
+      score: score
+    });
+  }))) : _react.default.createElement("div", null, " no data ");
 }
 
 var _default = TeamDetails;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","../_styledComponents/flexContainer":"Components/_styledComponents/flexContainer.js","./TeamIcon":"Components/teams/TeamIcon.js","axios":"../node_modules/axios/index.js","../scores/teamScoreIcon":"Components/scores/teamScoreIcon.js"}],"../node_modules/redux-logger/dist/redux-logger.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","../_styledComponents/flexContainer":"Components/_styledComponents/flexContainer.ts","./TeamIcon":"Components/teams/TeamIcon.tsx","axios":"../node_modules/axios/index.js","../scores/teamScoreIcon":"Components/scores/teamScoreIcon.js"}],"../node_modules/redux-logger/dist/redux-logger.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t(e.reduxLogger=e.reduxLogger||{})}(this,function(e){"use strict";function t(e,t){e.super_=t,e.prototype=Object.create(t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}})}function r(e,t){Object.defineProperty(this,"kind",{value:e,enumerable:!0}),t&&t.length&&Object.defineProperty(this,"path",{value:t,enumerable:!0})}function n(e,t,r){n.super_.call(this,"E",e),Object.defineProperty(this,"lhs",{value:t,enumerable:!0}),Object.defineProperty(this,"rhs",{value:r,enumerable:!0})}function o(e,t){o.super_.call(this,"N",e),Object.defineProperty(this,"rhs",{value:t,enumerable:!0})}function i(e,t){i.super_.call(this,"D",e),Object.defineProperty(this,"lhs",{value:t,enumerable:!0})}function a(e,t,r){a.super_.call(this,"A",e),Object.defineProperty(this,"index",{value:t,enumerable:!0}),Object.defineProperty(this,"item",{value:r,enumerable:!0})}function f(e,t,r){var n=e.slice((r||t)+1||e.length);return e.length=t<0?e.length+t:t,e.push.apply(e,n),e}function u(e){var t="undefined"==typeof e?"undefined":N(e);return"object"!==t?t:e===Math?"math":null===e?"null":Array.isArray(e)?"array":"[object Date]"===Object.prototype.toString.call(e)?"date":"function"==typeof e.toString&&/^\/.*\//.test(e.toString())?"regexp":"object"}function l(e,t,r,c,s,d,p){s=s||[],p=p||[];var g=s.slice(0);if("undefined"!=typeof d){if(c){if("function"==typeof c&&c(g,d))return;if("object"===("undefined"==typeof c?"undefined":N(c))){if(c.prefilter&&c.prefilter(g,d))return;if(c.normalize){var h=c.normalize(g,d,e,t);h&&(e=h[0],t=h[1])}}}g.push(d)}"regexp"===u(e)&&"regexp"===u(t)&&(e=e.toString(),t=t.toString());var y="undefined"==typeof e?"undefined":N(e),v="undefined"==typeof t?"undefined":N(t),b="undefined"!==y||p&&p[p.length-1].lhs&&p[p.length-1].lhs.hasOwnProperty(d),m="undefined"!==v||p&&p[p.length-1].rhs&&p[p.length-1].rhs.hasOwnProperty(d);if(!b&&m)r(new o(g,t));else if(!m&&b)r(new i(g,e));else if(u(e)!==u(t))r(new n(g,e,t));else if("date"===u(e)&&e-t!==0)r(new n(g,e,t));else if("object"===y&&null!==e&&null!==t)if(p.filter(function(t){return t.lhs===e}).length)e!==t&&r(new n(g,e,t));else{if(p.push({lhs:e,rhs:t}),Array.isArray(e)){var w;e.length;for(w=0;w<e.length;w++)w>=t.length?r(new a(g,w,new i(void 0,e[w]))):l(e[w],t[w],r,c,g,w,p);for(;w<t.length;)r(new a(g,w,new o(void 0,t[w++])))}else{var x=Object.keys(e),S=Object.keys(t);x.forEach(function(n,o){var i=S.indexOf(n);i>=0?(l(e[n],t[n],r,c,g,n,p),S=f(S,i)):l(e[n],void 0,r,c,g,n,p)}),S.forEach(function(e){l(void 0,t[e],r,c,g,e,p)})}p.length=p.length-1}else e!==t&&("number"===y&&isNaN(e)&&isNaN(t)||r(new n(g,e,t)))}function c(e,t,r,n){return n=n||[],l(e,t,function(e){e&&n.push(e)},r),n.length?n:void 0}function s(e,t,r){if(r.path&&r.path.length){var n,o=e[t],i=r.path.length-1;for(n=0;n<i;n++)o=o[r.path[n]];switch(r.kind){case"A":s(o[r.path[n]],r.index,r.item);break;case"D":delete o[r.path[n]];break;case"E":case"N":o[r.path[n]]=r.rhs}}else switch(r.kind){case"A":s(e[t],r.index,r.item);break;case"D":e=f(e,t);break;case"E":case"N":e[t]=r.rhs}return e}function d(e,t,r){if(e&&t&&r&&r.kind){for(var n=e,o=-1,i=r.path?r.path.length-1:0;++o<i;)"undefined"==typeof n[r.path[o]]&&(n[r.path[o]]="number"==typeof r.path[o]?[]:{}),n=n[r.path[o]];switch(r.kind){case"A":s(r.path?n[r.path[o]]:n,r.index,r.item);break;case"D":delete n[r.path[o]];break;case"E":case"N":n[r.path[o]]=r.rhs}}}function p(e,t,r){if(r.path&&r.path.length){var n,o=e[t],i=r.path.length-1;for(n=0;n<i;n++)o=o[r.path[n]];switch(r.kind){case"A":p(o[r.path[n]],r.index,r.item);break;case"D":o[r.path[n]]=r.lhs;break;case"E":o[r.path[n]]=r.lhs;break;case"N":delete o[r.path[n]]}}else switch(r.kind){case"A":p(e[t],r.index,r.item);break;case"D":e[t]=r.lhs;break;case"E":e[t]=r.lhs;break;case"N":e=f(e,t)}return e}function g(e,t,r){if(e&&t&&r&&r.kind){var n,o,i=e;for(o=r.path.length-1,n=0;n<o;n++)"undefined"==typeof i[r.path[n]]&&(i[r.path[n]]={}),i=i[r.path[n]];switch(r.kind){case"A":p(i[r.path[n]],r.index,r.item);break;case"D":i[r.path[n]]=r.lhs;break;case"E":i[r.path[n]]=r.lhs;break;case"N":delete i[r.path[n]]}}}function h(e,t,r){if(e&&t){var n=function(n){r&&!r(e,t,n)||d(e,t,n)};l(e,t,n)}}function y(e){return"color: "+F[e].color+"; font-weight: bold"}function v(e){var t=e.kind,r=e.path,n=e.lhs,o=e.rhs,i=e.index,a=e.item;switch(t){case"E":return[r.join("."),n,"→",o];case"N":return[r.join("."),o];case"D":return[r.join(".")];case"A":return[r.join(".")+"["+i+"]",a];default:return[]}}function b(e,t,r,n){var o=c(e,t);try{n?r.groupCollapsed("diff"):r.group("diff")}catch(e){r.log("diff")}o?o.forEach(function(e){var t=e.kind,n=v(e);r.log.apply(r,["%c "+F[t].text,y(t)].concat(P(n)))}):r.log("—— no diff ——");try{r.groupEnd()}catch(e){r.log("—— diff end —— ")}}function m(e,t,r,n){switch("undefined"==typeof e?"undefined":N(e)){case"object":return"function"==typeof e[n]?e[n].apply(e,P(r)):e[n];case"function":return e(t);default:return e}}function w(e){var t=e.timestamp,r=e.duration;return function(e,n,o){var i=["action"];return i.push("%c"+String(e.type)),t&&i.push("%c@ "+n),r&&i.push("%c(in "+o.toFixed(2)+" ms)"),i.join(" ")}}function x(e,t){var r=t.logger,n=t.actionTransformer,o=t.titleFormatter,i=void 0===o?w(t):o,a=t.collapsed,f=t.colors,u=t.level,l=t.diff,c="undefined"==typeof t.titleFormatter;e.forEach(function(o,s){var d=o.started,p=o.startedTime,g=o.action,h=o.prevState,y=o.error,v=o.took,w=o.nextState,x=e[s+1];x&&(w=x.prevState,v=x.started-d);var S=n(g),k="function"==typeof a?a(function(){return w},g,o):a,j=D(p),E=f.title?"color: "+f.title(S)+";":"",A=["color: gray; font-weight: lighter;"];A.push(E),t.timestamp&&A.push("color: gray; font-weight: lighter;"),t.duration&&A.push("color: gray; font-weight: lighter;");var O=i(S,j,v);try{k?f.title&&c?r.groupCollapsed.apply(r,["%c "+O].concat(A)):r.groupCollapsed(O):f.title&&c?r.group.apply(r,["%c "+O].concat(A)):r.group(O)}catch(e){r.log(O)}var N=m(u,S,[h],"prevState"),P=m(u,S,[S],"action"),C=m(u,S,[y,h],"error"),F=m(u,S,[w],"nextState");if(N)if(f.prevState){var L="color: "+f.prevState(h)+"; font-weight: bold";r[N]("%c prev state",L,h)}else r[N]("prev state",h);if(P)if(f.action){var T="color: "+f.action(S)+"; font-weight: bold";r[P]("%c action    ",T,S)}else r[P]("action    ",S);if(y&&C)if(f.error){var M="color: "+f.error(y,h)+"; font-weight: bold;";r[C]("%c error     ",M,y)}else r[C]("error     ",y);if(F)if(f.nextState){var _="color: "+f.nextState(w)+"; font-weight: bold";r[F]("%c next state",_,w)}else r[F]("next state",w);l&&b(h,w,r,k);try{r.groupEnd()}catch(e){r.log("—— log end ——")}})}function S(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=Object.assign({},L,e),r=t.logger,n=t.stateTransformer,o=t.errorTransformer,i=t.predicate,a=t.logErrors,f=t.diffPredicate;if("undefined"==typeof r)return function(){return function(e){return function(t){return e(t)}}};if(e.getState&&e.dispatch)return console.error("[redux-logger] redux-logger not installed. Make sure to pass logger instance as middleware:\n// Logger with default options\nimport { logger } from 'redux-logger'\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n// Or you can create your own logger with custom options http://bit.ly/redux-logger-options\nimport createLogger from 'redux-logger'\nconst logger = createLogger({\n  // ...options\n});\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n"),function(){return function(e){return function(t){return e(t)}}};var u=[];return function(e){var r=e.getState;return function(e){return function(l){if("function"==typeof i&&!i(r,l))return e(l);var c={};u.push(c),c.started=O.now(),c.startedTime=new Date,c.prevState=n(r()),c.action=l;var s=void 0;if(a)try{s=e(l)}catch(e){c.error=o(e)}else s=e(l);c.took=O.now()-c.started,c.nextState=n(r());var d=t.diff&&"function"==typeof f?f(r,l):t.diff;if(x(u,Object.assign({},t,{diff:d})),u.length=0,c.error)throw c.error;return s}}}}var k,j,E=function(e,t){return new Array(t+1).join(e)},A=function(e,t){return E("0",t-e.toString().length)+e},D=function(e){return A(e.getHours(),2)+":"+A(e.getMinutes(),2)+":"+A(e.getSeconds(),2)+"."+A(e.getMilliseconds(),3)},O="undefined"!=typeof performance&&null!==performance&&"function"==typeof performance.now?performance:Date,N="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},P=function(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)},C=[];k="object"===("undefined"==typeof global?"undefined":N(global))&&global?global:"undefined"!=typeof window?window:{},j=k.DeepDiff,j&&C.push(function(){"undefined"!=typeof j&&k.DeepDiff===c&&(k.DeepDiff=j,j=void 0)}),t(n,r),t(o,r),t(i,r),t(a,r),Object.defineProperties(c,{diff:{value:c,enumerable:!0},observableDiff:{value:l,enumerable:!0},applyDiff:{value:h,enumerable:!0},applyChange:{value:d,enumerable:!0},revertChange:{value:g,enumerable:!0},isConflict:{value:function(){return"undefined"!=typeof j},enumerable:!0},noConflict:{value:function(){return C&&(C.forEach(function(e){e()}),C=null),c},enumerable:!0}});var F={E:{color:"#2196F3",text:"CHANGED:"},N:{color:"#4CAF50",text:"ADDED:"},D:{color:"#F44336",text:"DELETED:"},A:{color:"#2196F3",text:"ARRAY:"}},L={level:"log",logger:console,logErrors:!0,collapsed:void 0,predicate:void 0,duration:!1,timestamp:!0,stateTransformer:function(e){return e},actionTransformer:function(e){return e},errorTransformer:function(e){return e},colors:{title:function(){return"inherit"},prevState:function(){return"#9E9E9E"},action:function(){return"#03A9F4"},nextState:function(){return"#4CAF50"},error:function(){return"#F20404"}},diff:!1,diffPredicate:void 0,transformer:void 0},T=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=e.dispatch,r=e.getState;return"function"==typeof t||"function"==typeof r?S()({dispatch:t,getState:r}):void console.error("\n[redux-logger v3] BREAKING CHANGE\n[redux-logger v3] Since 3.0.0 redux-logger exports by default logger with default settings.\n[redux-logger v3] Change\n[redux-logger v3] import createLogger from 'redux-logger'\n[redux-logger v3] to\n[redux-logger v3] import { createLogger } from 'redux-logger'\n")};e.defaults=L,e.createLogger=S,e.logger=T,e.default=T,Object.defineProperty(e,"__esModule",{value:!0})});
@@ -44552,7 +44372,7 @@ exports.devToolsEnhancer = (
     function() { return function(noop) { return noop; } }
 );
 
-},{"redux":"../node_modules/redux/es/redux.js"}],"teams/teamReducer.js":[function(require,module,exports) {
+},{"redux":"../node_modules/redux/es/redux.js"}],"teams/teamReducer.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44562,18 +44382,36 @@ exports.default = void 0;
 
 var _teamTypes = require("./teamTypes");
 
-const startState = {
+var __assign = void 0 && (void 0).__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+
+    return t;
+  };
+
+  return __assign.apply(this, arguments);
+};
+
+var startState = {
   loading: false,
   teams: [],
   error: ""
 };
 
-const teamsReducer = (state = startState, action) => {
+var teamsReducer = function (state, action) {
+  if (state === void 0) {
+    state = startState;
+  }
+
   switch (action.type) {
     case _teamTypes.FETCH_TEAMS_REQUEST:
-      return { ...state,
+      return __assign(__assign({}, state), {
         loading: true
-      };
+      });
 
     case _teamTypes.FETCH_TEAMS_SUCCESS:
       return {
@@ -44583,12 +44421,12 @@ const teamsReducer = (state = startState, action) => {
       };
 
     case _teamTypes.FETCH_TEAMS_FAILURE:
-      return {
-        loading: false,
-        ...state,
+      return __assign(__assign({
+        loading: false
+      }, state), {
         teams: [],
         error: action.payload
-      };
+      });
 
     default:
       return state;
@@ -44597,7 +44435,7 @@ const teamsReducer = (state = startState, action) => {
 
 var _default = teamsReducer;
 exports.default = _default;
-},{"./teamTypes":"teams/teamTypes.js"}],"players/playerReducer.js":[function(require,module,exports) {
+},{"./teamTypes":"teams/teamTypes.tsx"}],"players/playerReducer.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44607,18 +44445,36 @@ exports.default = void 0;
 
 var _playerTypes = require("./playerTypes");
 
-const startState = {
+var __assign = void 0 && (void 0).__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+
+    return t;
+  };
+
+  return __assign.apply(this, arguments);
+};
+
+var startState = {
   loading: false,
   players: [],
   error: ""
 };
 
-const playerReducer = (state = startState, action) => {
+var playerReducer = function (state, action) {
+  if (state === void 0) {
+    state = startState;
+  }
+
   switch (action.type) {
     case _playerTypes.FETCH_PLAYERS_REQUEST:
-      return { ...state,
+      return __assign(__assign({}, state), {
         loading: true
-      };
+      });
 
     case _playerTypes.FETCH_PLAYERS_SUCCESS:
       return {
@@ -44628,12 +44484,12 @@ const playerReducer = (state = startState, action) => {
       };
 
     case _playerTypes.FETCH_PLAYERS_FAILURE:
-      return {
-        loading: false,
-        ...state,
+      return __assign(__assign({
+        loading: false
+      }, state), {
         players: [],
         error: action.payload
-      };
+      });
 
     default:
       return state;
@@ -44642,7 +44498,7 @@ const playerReducer = (state = startState, action) => {
 
 var _default = playerReducer;
 exports.default = _default;
-},{"./playerTypes":"players/playerTypes.js"}],"redux/rootReducer.js":[function(require,module,exports) {
+},{"./playerTypes":"players/playerTypes.ts"}],"redux/rootReducer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44664,7 +44520,7 @@ const rootReducer = (0, _redux.combineReducers)({
 });
 var _default = rootReducer;
 exports.default = _default;
-},{"redux":"../node_modules/redux/es/redux.js","../teams/teamReducer":"teams/teamReducer.js","../players/playerReducer":"players/playerReducer.js"}],"redux/store.js":[function(require,module,exports) {
+},{"redux":"../node_modules/redux/es/redux.js","../teams/teamReducer":"teams/teamReducer.tsx","../players/playerReducer":"players/playerReducer.ts"}],"redux/store.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44687,7 +44543,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const store = (0, _redux.createStore)(_rootReducer.default, (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxLogger.default, _reduxThunk.default)));
 var _default = store;
 exports.default = _default;
-},{"redux":"../node_modules/redux/es/redux.js","redux-logger":"../node_modules/redux-logger/dist/redux-logger.js","redux-thunk":"../node_modules/redux-thunk/es/index.js","redux-devtools-extension":"../node_modules/redux-devtools-extension/index.js","./rootReducer":"redux/rootReducer.js"}],"Components/_styledComponents/navBar.js":[function(require,module,exports) {
+},{"redux":"../node_modules/redux/es/redux.js","redux-logger":"../node_modules/redux-logger/dist/redux-logger.js","redux-thunk":"../node_modules/redux-thunk/es/index.js","redux-devtools-extension":"../node_modules/redux-devtools-extension/index.js","./rootReducer":"redux/rootReducer.js"}],"Components/_styledComponents/navBar.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44699,64 +44555,47 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Nav = _styledComponents.default.div`
-  background-color: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
-`;
+var __makeTemplateObject = void 0 && (void 0).__makeTemplateObject || function (cooked, raw) {
+  if (Object.defineProperty) {
+    Object.defineProperty(cooked, "raw", {
+      value: raw
+    });
+  } else {
+    cooked.raw = raw;
+  }
+
+  return cooked;
+};
+
+var Nav = _styledComponents.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  background-color: #fff;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.0975);\n"], ["\n  background-color: #fff;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.0975);\n"])));
+
 exports.Nav = Nav;
-const NavHeader = _styledComponents.default.div`
-  max-width: 1010px;
-  padding: 26px 20px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-`;
+
+var NavHeader = _styledComponents.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  max-width: 1010px;\n  padding: 26px 20px;\n  width: 100%;\n  display: flex;\n  align-items: center;\n  margin: 0 auto;\n"], ["\n  max-width: 1010px;\n  padding: 26px 20px;\n  width: 100%;\n  display: flex;\n  align-items: center;\n  margin: 0 auto;\n"])));
+
 exports.NavHeader = NavHeader;
-const NavLeft = _styledComponents.default.div`
-  width: 33.333%;
-  text-align: left;
-`;
+
+var NavLeft = _styledComponents.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  width: 33.333%;\n  text-align: left;\n"], ["\n  width: 33.333%;\n  text-align: left;\n"])));
+
 exports.NavLeft = NavLeft;
-const NavCenter = _styledComponents.default.div`
-  width: 33.333%;
-  text-align: center;
-`;
+
+var NavCenter = _styledComponents.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  width: 33.333%;\n  text-align: center;\n"], ["\n  width: 33.333%;\n  text-align: center;\n"])));
+
 exports.NavCenter = NavCenter;
-const Input = _styledComponents.default.input`
-  font-size: 16px;
-  border: solid 1px #dbdbdb;
-  border-radius: 3px;
-  color: #262626;
-  padding: 7px 33px;
-  border-radius: 3px;
-  color: #999;
-  cursor: text;
-  font-size: 14px;
-  font-weight: 300;
-  text-align: center;
-  background: #fafafa;
-  &:active,
-  &:focus {
-    text-align: left;
-  }
-`;
+
+var Input = _styledComponents.default.input(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  font-size: 16px;\n  border: solid 1px #dbdbdb;\n  border-radius: 3px;\n  color: #262626;\n  padding: 7px 33px;\n  border-radius: 3px;\n  color: #999;\n  cursor: text;\n  font-size: 14px;\n  font-weight: 300;\n  text-align: center;\n  background: #fafafa;\n  &:active,\n  &:focus {\n    text-align: left;\n  }\n"], ["\n  font-size: 16px;\n  border: solid 1px #dbdbdb;\n  border-radius: 3px;\n  color: #262626;\n  padding: 7px 33px;\n  border-radius: 3px;\n  color: #999;\n  cursor: text;\n  font-size: 14px;\n  font-weight: 300;\n  text-align: center;\n  background: #fafafa;\n  &:active,\n  &:focus {\n    text-align: left;\n  }\n"])));
+
 exports.Input = Input;
-const NavRight = _styledComponents.default.div`
-  width: 33.333%;
-  text-align: right;
-  svg {
-    margin-right: 20px;
-  }
-`;
+
+var NavRight = _styledComponents.default.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  width: 33.333%;\n  text-align: right;\n  svg {\n    margin-right: 20px;\n  }\n"], ["\n  width: 33.333%;\n  text-align: right;\n  svg {\n    margin-right: 20px;\n  }\n"])));
+
 exports.NavRight = NavRight;
-const MenuLink = _styledComponents.default.p`
-  margin-left: 15px;
-  text-decoration: none;
-  display: inline-flex;
-`;
+
+var MenuLink = _styledComponents.default.p(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  margin-left: 15px;\n  text-decoration: none;\n  display: inline-flex;\n"], ["\n  margin-left: 15px;\n  text-decoration: none;\n  display: inline-flex;\n"])));
+
 exports.MenuLink = MenuLink;
-},{"styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/navbar/Navbar.js":[function(require,module,exports) {
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7;
+},{"styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/navbar/Navbar.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44770,11 +44609,9 @@ var _reactRouterDom = require("react-router-dom");
 
 var _navBar = require("../_styledComponents/navBar");
 
-var _jsxFileName = "C:\\Users\\Korisnik\\Desktop\\REACT\\ReactMyApp\\app\\src\\Components\\navbar\\Navbar.js";
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Navbar() {
+var Navbar = function () {
   // return (
   //   <nav>
   //     <div className="container">
@@ -44790,86 +44627,21 @@ function Navbar() {
   //     </div>
   //   </nav>
   // );
-  return /*#__PURE__*/_react.default.createElement(_navBar.Nav, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 5
-    }
-  }, /*#__PURE__*/_react.default.createElement(_navBar.NavHeader, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 31,
-      columnNumber: 7
-    }
-  }, /*#__PURE__*/_react.default.createElement(_navBar.NavLeft, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 9
-    }
-  }, "NBA LEAGUE"), /*#__PURE__*/_react.default.createElement(_navBar.NavCenter, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33,
-      columnNumber: 9
-    }
-  }, /*#__PURE__*/_react.default.createElement(_navBar.Input, {
+  return _react.default.createElement(_navBar.Nav, null, _react.default.createElement(_navBar.NavHeader, null, _react.default.createElement(_navBar.NavLeft, null, "NBA LEAGUE"), _react.default.createElement(_navBar.NavCenter, null, _react.default.createElement(_navBar.Input, {
     type: "text",
-    placeholder: "Search",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34,
-      columnNumber: 11
-    }
-  })), /*#__PURE__*/_react.default.createElement(_navBar.NavRight, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36,
-      columnNumber: 9
-    }
-  }, /*#__PURE__*/_react.default.createElement(_navBar.MenuLink, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 11
-    }
-  }, " ", /*#__PURE__*/_react.default.createElement(_reactRouterDom.NavLink, {
-    to: "/",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39,
-      columnNumber: 13
-    }
-  }, "NBA Teams")), /*#__PURE__*/_react.default.createElement(_navBar.MenuLink, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 41,
-      columnNumber: 11
-    }
-  }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.NavLink, {
-    to: "/AllPlayers",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 42,
-      columnNumber: 13
-    }
-  }, "All Players")))));
-}
+    placeholder: "Search"
+  })), _react.default.createElement(_navBar.NavRight, null, _react.default.createElement(_navBar.MenuLink, null, " ", _react.default.createElement(_reactRouterDom.NavLink, {
+    to: "/"
+  }, "NBA Teams")), _react.default.createElement(_navBar.MenuLink, null, _react.default.createElement(_reactRouterDom.NavLink, {
+    to: "/AllPlayers"
+  }, "All Players")), _react.default.createElement(_navBar.MenuLink, null, _react.default.createElement(_reactRouterDom.NavLink, {
+    to: "/Login"
+  }, "Login")))));
+};
 
 var _default = Navbar;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../_styledComponents/navBar":"Components/_styledComponents/navBar.js"}],"Components/_styledComponents/playerIcon.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../_styledComponents/navBar":"Components/_styledComponents/navBar.ts"}],"Components/_styledComponents/playerIcon.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44881,69 +44653,49 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const PlayerIconWrapper = _styledComponents.default.div`
-  overflow: hidden;
-  padding: 0 0 32px;
-  margin: 20px;
-  width: 300px;
-  font-family: Quicksand, arial, sans-serif;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
-  border-radius: 5px;
-`;
+var __makeTemplateObject = void 0 && (void 0).__makeTemplateObject || function (cooked, raw) {
+  if (Object.defineProperty) {
+    Object.defineProperty(cooked, "raw", {
+      value: raw
+    });
+  } else {
+    cooked.raw = raw;
+  }
+
+  return cooked;
+};
+
+var PlayerIconWrapper = _styledComponents.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  overflow: hidden;\n  padding: 0 0 32px;\n  margin: 20px;\n  width: 300px;\n  font-family: Quicksand, arial, sans-serif;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);\n  border-radius: 5px;\n"], ["\n  overflow: hidden;\n  padding: 0 0 32px;\n  margin: 20px;\n  width: 300px;\n  font-family: Quicksand, arial, sans-serif;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);\n  border-radius: 5px;\n"])));
+
 exports.PlayerIconWrapper = PlayerIconWrapper;
-const CardHeader = _styledComponents.default.header`
-  padding-top: 32px;
-  padding-bottom: 32px;
-`;
+
+var CardHeader = _styledComponents.default.header(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  padding-top: 32px;\n  padding-bottom: 32px;\n"], ["\n  padding-top: 32px;\n  padding-bottom: 32px;\n"])));
+
 exports.CardHeader = CardHeader;
-const CardHeading = _styledComponents.default.h1`
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-`;
+
+var CardHeading = _styledComponents.default.h1(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  font-size: 24px;\n  font-weight: bold;\n  text-align: center;\n"], ["\n  font-size: 24px;\n  font-weight: bold;\n  text-align: center;\n"])));
+
 exports.CardHeading = CardHeading;
-const CardBody = _styledComponents.default.div`
-  padding-right: 32px;
-  padding-left: 32px;
-`;
+
+var CardBody = _styledComponents.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  padding-right: 32px;\n  padding-left: 32px;\n"], ["\n  padding-right: 32px;\n  padding-left: 32px;\n"])));
+
 exports.CardBody = CardBody;
-const CardImage = _styledComponents.default.div`
-  width: 100%;
-  height: 200px;
-  background-repeat: no-repeat;
-  background-size: 200px 200px;
-  background-image: url(${props => props.imgUrl});
-  margin-bottom: 35px;
-`;
+
+var CardImage = _styledComponents.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  width: 100%;\n  height: 200px;\n  background-repeat: no-repeat;\n  background-size: 200px 200px;\n  background-image: url(", ");\n  margin-bottom: 35px;\n"], ["\n  width: 100%;\n  height: 200px;\n  background-repeat: no-repeat;\n  background-size: 200px 200px;\n  background-image: url(", ");\n  margin-bottom: 35px;\n"])), function (_a) {
+  var imgUrl = _a.imgUrl;
+  return imgUrl;
+});
+
 exports.CardImage = CardImage;
-const CardFieldset = _styledComponents.default.fieldset`
-  position: relative;
-  padding: 0;
-  margin: 0;
-  border: 0;
 
-  & + & {
-    margin-top: 24px;
-  }
+var CardFieldset = _styledComponents.default.fieldset(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  position: relative;\n  padding: 0;\n  margin: 0;\n  border: 0;\n\n  & + & {\n    margin-top: 24px;\n  }\n\n  &:nth-last-of-type(2) {\n    margin-top: 32px;\n  }\n\n  &:last-of-type {\n    text-align: center;\n  }\n"], ["\n  position: relative;\n  padding: 0;\n  margin: 0;\n  border: 0;\n\n  & + & {\n    margin-top: 24px;\n  }\n\n  &:nth-last-of-type(2) {\n    margin-top: 32px;\n  }\n\n  &:last-of-type {\n    text-align: center;\n  }\n"])));
 
-  &:nth-last-of-type(2) {
-    margin-top: 32px;
-  }
-
-  &:last-of-type {
-    text-align: center;
-  }
-`;
 exports.CardFieldset = CardFieldset;
-const CardOptionsNote = _styledComponents.default.small`
-  padding-top: 8px;
-  display: block;
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  text-transform: uppercase;
-`;
+
+var CardOptionsNote = _styledComponents.default.small(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  padding-top: 8px;\n  display: block;\n  width: 100%;\n  font-size: 12px;\n  text-align: center;\n  text-transform: uppercase;\n"], ["\n  padding-top: 8px;\n  display: block;\n  width: 100%;\n  font-size: 12px;\n  text-align: center;\n  text-transform: uppercase;\n"])));
+
 exports.CardOptionsNote = CardOptionsNote;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7;
 },{"styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/players/PlayerIcon.js":[function(require,module,exports) {
 "use strict";
 
@@ -45039,7 +44791,7 @@ function PlayerIcon({
 
 var _default = PlayerIcon;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../_styledComponents/playerIcon":"Components/_styledComponents/playerIcon.js"}],"Components/players/AllPlayers.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../_styledComponents/playerIcon":"Components/_styledComponents/playerIcon.ts"}],"Components/players/AllPlayers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45107,7 +44859,64 @@ function AllPlayers() {
 
 var _default = AllPlayers;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","../../redux/index":"redux/index.js","../_styledComponents/flexContainer":"Components/_styledComponents/flexContainer.js","./PlayerIcon":"Components/players/PlayerIcon.js"}],"App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","../../redux/index":"redux/index.js","../_styledComponents/flexContainer":"Components/_styledComponents/flexContainer.ts","./PlayerIcon":"Components/players/PlayerIcon.js"}],"Components/_styledComponents/authForm.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AuthForm = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __makeTemplateObject = void 0 && (void 0).__makeTemplateObject || function (cooked, raw) {
+  if (Object.defineProperty) {
+    Object.defineProperty(cooked, "raw", {
+      value: raw
+    });
+  } else {
+    cooked.raw = raw;
+  }
+
+  return cooked;
+};
+
+var AuthForm = _styledComponents.default.form(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  flex-direction: column;\n  width: 50%;\n  margin: 0 auto;\n"], ["\n  display: flex;\n  align-items: center;\n  flex-direction: column;\n  width: 50%;\n  margin: 0 auto;\n"])));
+
+exports.AuthForm = AuthForm;
+var templateObject_1;
+},{"styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/Auth/LoginPage.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = LoginPage;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _authForm = require("../_styledComponents/authForm");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function LoginPage() {
+  return _react.default.createElement(_authForm.AuthForm, null, _react.default.createElement("label", {
+    htmlFor: "username"
+  }, "Username"), _react.default.createElement("input", {
+    type: "text",
+    placeholder: "Username"
+  }), _react.default.createElement("label", {
+    htmlFor: "password"
+  }, "Password"), _react.default.createElement("input", {
+    type: "password",
+    placeholder: "Password"
+  }), _react.default.createElement("button", {
+    type: "submit"
+  }, "Login"));
+}
+},{"react":"../node_modules/react/index.js","../_styledComponents/authForm":"Components/_styledComponents/authForm.ts"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45131,6 +44940,8 @@ var _Navbar = _interopRequireDefault(require("./Components/navbar/Navbar"));
 
 var _AllPlayers = _interopRequireDefault(require("./Components/players/AllPlayers"));
 
+var _LoginPage = _interopRequireDefault(require("./Components/Auth/LoginPage"));
+
 var _jsxFileName = "C:\\Users\\Korisnik\\Desktop\\REACT\\ReactMyApp\\app\\src\\App.js";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -45140,14 +44951,14 @@ const App = () => {
     __self: void 0,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 13,
       columnNumber: 5
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
     __self: void 0,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 14,
       columnNumber: 7
     }
   }, /*#__PURE__*/_react.default.createElement(_reactRedux.Provider, {
@@ -45155,14 +44966,14 @@ const App = () => {
     __self: void 0,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 15,
       columnNumber: 9
     }
   }, /*#__PURE__*/_react.default.createElement(_Navbar.default, {
     __self: void 0,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 16,
       columnNumber: 11
     }
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -45172,7 +44983,7 @@ const App = () => {
     __self: void 0,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 17,
       columnNumber: 11
     }
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -45181,7 +44992,7 @@ const App = () => {
     __self: void 0,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 18,
       columnNumber: 11
     }
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -45190,7 +45001,16 @@ const App = () => {
     __self: void 0,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 19,
+      columnNumber: 11
+    }
+  }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/Login",
+    component: _LoginPage.default,
+    __self: void 0,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20,
       columnNumber: 11
     }
   }))));
@@ -45198,7 +45018,7 @@ const App = () => {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"../node_modules/react-redux/es/index.js","./Components/teams/Team":"Components/teams/Team.js","./Components/teams/TeamDetails":"Components/teams/TeamDetails.js","./redux/store":"redux/store.js","./Components/navbar/Navbar":"Components/navbar/Navbar.js","./Components/players/AllPlayers":"Components/players/AllPlayers.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"../node_modules/react-redux/es/index.js","./Components/teams/Team":"Components/teams/Team.tsx","./Components/teams/TeamDetails":"Components/teams/TeamDetails.tsx","./redux/store":"redux/store.js","./Components/navbar/Navbar":"Components/navbar/Navbar.tsx","./Components/players/AllPlayers":"Components/players/AllPlayers.js","./Components/Auth/LoginPage":"Components/Auth/LoginPage.tsx"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -45247,7 +45067,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57668" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58087" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
